@@ -1,0 +1,48 @@
+<ion-content>
+  <section>
+    <h1>Trashify</h1>
+
+    <ion-card class="card">
+      <ion-item-divider>
+        <ion-label color="tertiary"> Creez mon compte avec </ion-label>
+      </ion-item-divider>
+      <br />
+      <ion-button
+        color="light"
+        expand="block"
+        fill="outline"
+        (click)="toSignup()"
+      >
+        <ion-icon name="mail-outline"></ion-icon> &nbsp;
+        <p>Email</p>
+      </ion-button>
+
+      <br />
+
+      <ion-button color="light" expand="block" fill="outline">
+        <ion-icon name="logo-google"></ion-icon> &nbsp;
+        <p>Compte Google</p>
+      </ion-button>
+
+      <ion-button color="light" expand="block" fill="outline">
+        <ion-icon name="logo-facebook"></ion-icon> &nbsp;
+        <p>Compte Facebook</p>
+      </ion-button>
+      <br />
+      <ion-item-divider>
+        <ion-label color="tertiary"> Mais j'ai deja un compte? </ion-label>
+      </ion-item-divider>
+      <br />
+      <ion-button
+        color="light"
+        expand="block"
+        fill="outline"
+        (click)="toLogin()"
+      >
+        &nbsp;
+        <ion-icon name="log-in-outline"></ion-icon>
+        <p>Connectez-vous!</p>
+      </ion-button>
+    </ion-card>
+  </section>
+</ion-content>

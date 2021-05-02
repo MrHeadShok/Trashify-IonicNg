@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0px;
+
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 8px;
+}
+
+section {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  background: linear-gradient(-45deg, #0794f1, #09fc31, #e77c19, #e42851);
+  background-size: 200% 200%;
+  position: relative;
+  animation: change 10s ease-in-out infinite;
+}
+
+h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 3px solid #fff;
+  position: absolute;
+  top: 31%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 5rem 3rem;
+}
+
+ion-card {
+  padding: 1rem 2rem;
+}
+
+@keyframes change {
+  0% {
+    background-position: 0 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+.card {
+  position: absolute;
+  bottom: 0;
+
+  width: 100%;
+  background: rgba(255, 255, 255, 0.096);
+}
+
+ion-button {
+  margin-bottom: 7px;
+
+  --background-hover-opacity: 1.5;
+  --border-color: #f80f0f;
+  --padding-top: 2px;
+  --ripple-color: #1bade2;
+}
+
+ion-divider {
+  --padding-end: 2px;
+}
