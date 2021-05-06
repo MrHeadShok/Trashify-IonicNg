@@ -1,40 +1,120 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Register</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <form>
-    <ion-item lines="full">
-      <ion-label position="floating">First name</ion-label>
-      <ion-input type="text" required></ion-input>
+  <ion-card color="transparent">
+    <img src="../../../assets/img/signup.png" />
+    <ion-card-content>
+      <ion-text color="light">
+        <p>Trashify should help you create a cleaner planet</p>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
+
+  <form
+    class="form"
+    [formGroup]="validations_form"
+    (ngSubmit)="tryRegister(validations_form.value)"
+  >
+    <ion-item color="transparent">
+      <ion-label color="light" id="name" position="floating">
+        <p><ion-icon name="body-outline"></ion-icon> Nom</p>
+      </ion-label>
+      <ion-input formControlName="fullname" color="light" required></ion-input>
     </ion-item>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Last name</ion-label>
-      <ion-input type="text" required></ion-input>
+    <ion-item color="transparent">
+      <ion-label position="floating" color="light">
+        <p><ion-icon name="person-circle-outline"></ion-icon> Adresse Email</p>
+      </ion-label>
+      <ion-input formControlName="email" type="Email"></ion-input>
     </ion-item>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="text" required></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" required></ion-input>
-    </ion-item>
-
-    <ion-row>
-      <ion-col>
-        <ion-button type="submit" color="danger" expand="block"
-          >Sign Up</ion-button
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div
+          class="error-message"
+          *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)"
         >
-      </ion-col>
-    </ion-row>
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item color="transparent">
+      <ion-label
+        color="light"
+        position="floating"
+        minlength="5"
+        pattern="Password"
+      >
+        <p><ion-icon name="lock-closed-outline"></ion-icon> Mot de passe</p>
+      </ion-label>
+      <ion-input
+        color="light"
+        type="password"
+        formControlName="password"
+        required
+      ></ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.password">
+        <div
+          class="error-message"
+          *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)"
+        >
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-radio-group formControlName="role" value="group" #role required>
+      <ion-list-header>
+        <ion-label color="light">
+          <p>
+            <ion-icon name="clipboard-outline"></ion-icon>&nbsp; &nbsp; En tant
+          </p>
+        </ion-label>
+      </ion-list-header>
+      <ion-item color="transparent">
+        <ion-label color="light">
+          <p>
+            <ion-icon name="person-outline"></ion-icon>&nbsp; &nbsp;Chauffeur
+          </p>
+        </ion-label>
+        <ion-radio
+          value="Chauffeur"
+          color="transparent"
+          slot="start"
+          color="success"
+        >
+        </ion-radio>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label color="light">
+          <p><ion-icon name="people-outline"></ion-icon>&nbsp; &nbsp; client</p>
+        </ion-label>
+        <ion-radio
+          value="Client"
+          color="transparent"
+          slot="start"
+          color="tertiary"
+        >
+        </ion-radio>
+      </ion-item>
+    </ion-radio-group>
+
+    <ion-button color="success" expand="block" fill="solid" type="submit">
+      <ion-icon name="person-add-outline"></ion-icon>
+      <p>&nbsp; &nbsp;Creez le compte!</p>
+    </ion-button>
+
+    <label class="error-message">{{errorMessage}}</label>
+    <label class="success-message">{{successMessage}}</label>
   </form>
+  <div>
+    <ion-button expand="block" color="medium" (click)="navigateToLoginPage()">
+      &nbsp; <ion-icon name="log-in-outline"></ion-icon> &nbsp;J'ai deja un
+      compte
+    </ion-button>
+  </div>
 </ion-content>

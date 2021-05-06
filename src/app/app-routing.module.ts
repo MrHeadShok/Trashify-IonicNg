@@ -12,15 +12,25 @@ const routes: Routes = [
   },
   {
     path: 'connectpage',
-    loadChildren: () => import('./pages/connectpage/connectpage.module').then( m => m.ConnectpagePageModule)
+    loadChildren: () =>
+      import('./pages/connectpage/connectpage.module').then(
+        (m) => m.ConnectpagePageModule
+      ),
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () =>
+      import('./pages/login/login.module').then((m) => m.LoginPageModule),
   },
   {
     path: 'signup',
-    loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
+    loadChildren: () =>
+      import('./pages/signup/signup.module').then((m) => m.SignupPageModule),
+  },
+  {
+    path: '',
+    loadChildren: () =>
+      import('./pages/tabs/tabs.module').then((m) => m.TabsPageModule),
   },
 ];
 @NgModule({
